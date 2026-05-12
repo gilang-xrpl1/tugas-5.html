@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RUMAH BAJU — Furniture & Home Decor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --warm-white: #faf7f2;
+      --blush: #e8d5c4;
+      --terracotta: #c47c5a;
+      --terracotta-dark: #a35f3e;
+      --wood: #8b5e3c;
+      --wood-light: #c49a6c;
+      --sage: #7a8c7e;
+      --charcoal: #2d2926;
+      --soft-gray: #9e9590;
+      --gold: #c9a84c;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(250,247,242,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,154,108,0.2);
+      transition: all 0.3s ease;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--wood);
+      letter-spacing: 0.08em;
+    }
+    .nav-logo span { color: var(--terracotta); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--charcoal);
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--terracotta); }
+    .nav-cta {
+      background: var(--terracotta); color: #fff;
+      border: none; padding: 0.65rem 1.6rem;
+      border-radius: 2rem; font-size: 0.85rem; font-weight: 500;
+      cursor: pointer; letter-spacing: 0.04em; transition: background 0.3s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 7rem 4rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg-circle {
+      position: absolute; width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #e8d5c4 0%, transparent 70%);
+      top: -100px; right: -100px; z-index: 0; opacity: 0.6;
+    }
+    .hero-bg-circle2 {
+      position: absolute; width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #c49a6c33 0%, transparent 70%);
+      bottom: 80px; left: 60px; z-index: 0;
+    }
+
+    .hero-text { position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--blush); color: var(--wood);
+      padding: 0.4rem 1rem; border-radius: 2rem;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+    .hero-tag::before { content: '🪵'; font-size: 1rem; }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease 0.25s both;
+    }
+    h1 em { color: var(--terracotta); font-style: italic; }
+
+    .hero-sub {
+      font-size: 1.05rem; color: var(--soft-gray);
+      line-height: 1.8; max-width: 480px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.8s ease 0.4s both;
+    }
+
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.8s ease 0.55s both;
+    }
+    .btn-primary {
+      background: var(--terracotta); color: #fff;
+      padding: 1rem 2.4rem; border-radius: 3rem;
+      border: none; font-size: 0.95rem; font-weight: 500;
+      cursor: pointer; transition: all 0.3s; text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(196,124,90,0.35); }
+    .btn-secondary {
+      background: transparent; color: var(--charcoal);
+      padding: 1rem 2.4rem; border-radius: 3rem;
+      border: 1.5px solid var(--blush); font-size: 0.95rem;
+      cursor: pointer; transition: all 0.3s; text-decoration: none;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3.5rem;
+      animation: fadeUp 0.8s ease 0.7s both;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; color: var(--wood); display: block;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--soft-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* Hero image side */
+    .hero-visual {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center; align-items: center;
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+    .hero-card-main {
+      width: 380px; height: 480px;
+      background: var(--blush);
+      border-radius: 2rem;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      box-shadow: 20px 30px 60px rgba(139,94,60,0.2);
+    }
+    .hero-card-main::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b5e3c' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .furniture-icon { font-size: 8rem; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); }
+    .hero-card-label {
+      margin-top: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--wood);
+    }
+    .hero-price-badge {
+      position: absolute; bottom: -10px; right: -10px;
+      background: var(--terracotta); color: #fff;
+      width: 90px; height: 90px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(196,124,90,0.4);
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em;
+    }
+    .hero-price-badge strong { font-size: 1.1rem; display: block; }
+    .floating-card {
+      position: absolute; top: 20px; left: -50px;
+      background: #fff; border-radius: 1rem;
+      padding: 0.8rem 1.2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      display: flex; align-items: center; gap: 0.7rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    .floating-card2 {
+      position: absolute; bottom: 60px; right: -40px;
+      background: #fff; border-radius: 1rem;
+      padding: 0.8rem 1.2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      display: flex; align-items: center; gap: 0.7rem;
+      animation: float 3.5s ease-in-out 0.5s infinite;
+    }
+    .fc-icon { font-size: 1.5rem; }
+    .fc-text { font-size: 0.75rem; color: var(--charcoal); font-weight: 500; }
+    .fc-sub { font-size: 0.65rem; color: var(--soft-gray); }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 6rem 4rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+      background: var(--cream);
+    }
+    .about-label {
+      font-size: 0.75rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--terracotta); font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.25; margin-bottom: 1.5rem;
+    }
+    .about-text {
+      color: var(--soft-gray); line-height: 1.9; font-size: 0.97rem;
+      margin-bottom: 1.2rem;
+    }
+    .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .value-item {
+      background: #fff; border-radius: 1rem;
+      padding: 1.2rem; border: 1px solid rgba(196,154,108,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .value-item:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(139,94,60,0.12); }
+    .value-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .value-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.3rem; }
+    .value-desc { font-size: 0.78rem; color: var(--soft-gray); line-height: 1.6; }
+
+    .about-visual {
+      display: grid; grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto; gap: 1rem;
+    }
+    .about-box {
+      border-radius: 1.5rem; display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; transition: transform 0.3s;
+    }
+    .about-box:hover { transform: scale(1.03); }
+    .ab1 { background: var(--blush); height: 200px; grid-column: 1 / 3; }
+    .ab2 { background: #dce8dc; height: 160px; }
+    .ab3 { background: #f0e6d0; height: 160px; }
+
+    /* ── PRODUCTS ── */
+    #products { padding: 6rem 4rem; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .products-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .product-card {
+      background: #fff; border-radius: 1.5rem;
+      overflow: hidden; border: 1px solid rgba(196,154,108,0.15);
+      transition: transform 0.35s, box-shadow 0.35s;
+      cursor: pointer;
+    }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(139,94,60,0.15); }
+    .product-img {
+      background: var(--cream); height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5.5rem; position: relative;
+    }
+    .product-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--sage); color: #fff;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em;
+      padding: 0.3rem 0.7rem; border-radius: 2rem; text-transform: uppercase;
+    }
+    .product-info { padding: 1.4rem; }
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; margin-bottom: 0.3rem;
+    }
+    .product-cat {
+      font-size: 0.75rem; color: var(--soft-gray);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 0.8rem;
+    }
+    .product-bottom { display: flex; align-items: center; justify-content: space-between; }
+    .product-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; color: var(--terracotta);
+    }
+    .product-old {
+      font-size: 0.8rem; color: var(--soft-gray);
+      text-decoration: line-through; margin-left: 0.4rem;
+    }
+    .add-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--terracotta); color: #fff; border: none;
+      font-size: 1.3rem; cursor: pointer; transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .add-btn:hover { background: var(--terracotta-dark); transform: scale(1.1); }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { padding: 6rem 4rem; background: var(--cream); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .testi-card {
+      background: #fff; border-radius: 1.5rem;
+      padding: 2rem; border: 1px solid rgba(196,154,108,0.18);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .testi-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(139,94,60,0.12); }
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; }
+    .testi-text { color: var(--charcoal); line-height: 1.8; font-size: 0.93rem; margin-bottom: 1.5rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--blush); display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .testi-name { font-weight: 600; font-size: 0.9rem; }
+    .testi-city { font-size: 0.75rem; color: var(--soft-gray); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal); color: #fff;
+      padding: 4rem 4rem 2rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: #fff; margin-bottom: 1rem;
+    }
+    .footer-logo span { color: var(--terracotta); font-style: italic; }
+    .footer-desc { font-size: 0.85rem; color: #9e9e9e; line-height: 1.8; margin-bottom: 1.5rem; }
+    .social-row { display: flex; gap: 0.8rem; }
+    .social-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1px solid #444; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; cursor: pointer; transition: all 0.3s; text-decoration: none; color: #fff;
+    }
+    .social-btn:hover { border-color: var(--terracotta); background: var(--terracotta); }
+    .footer-col h4 { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.2rem; color: var(--blush); }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a { color: #9e9e9e; text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+    .footer-col ul li a:hover { color: var(--terracotta); }
+    .footer-bottom {
+      border-top: 1px solid #333; padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: #666;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+      .hero-visual { display: none; }
+      #about { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2.5rem; }
+      .about-visual { display: none; }
+      #products { padding: 4rem 1.5rem; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      #testimonials { padding: 4rem 1.5rem; }
+      .testi-grid { grid-template-columns: 1fr; }
+      footer { padding: 3rem 1.5rem 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    /* === TAMBAHAN GAMBAR TANPA UBAH HTML === */
+
+/* HERO IMAGE */
+.hero-card-main {
+  background: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7') center/cover no-repeat !important;
+}
+
+.hero-card-main .furniture-icon {
+  display: none; /* sembunyikan emoji */
+}
+
+/* PRODUCT IMAGES */
+.product-card:nth-child(1) .product-img {
+  background: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc') center/cover no-repeat;
+}
+.product-card:nth-child(2) .product-img {
+  background: url('https://images.unsplash.com/photo-1503602642458-232111445657') center/cover no-repeat;
+}
+.product-card:nth-child(3) .product-img {
+  background: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85') center/cover no-repeat;
+}
+.product-card:nth-child(4) .product-img {
+  background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6') center/cover no-repeat;
+}
+
+/* SEMBUNYIKAN EMOJI */
+.product-img {
+  font-size: 0 !important;
+}
+
+/* EFFECT ZOOM */
+.product-card:hover .product-img {
+  transform: scale(1.05);
+  transition: 0.4s;
+}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">RUMAH<span>Baju</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">Tentang Kami</a></li>
+    <li><a href="#products">Koleksi</a></li>
+    <li><a href="#testimonials">Ulasan</a></li>
+    <li><a href="#footer">Kontak</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Cek Koleksi</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle2"></div>
+
+  <div class="hero-text">
+    <div class="hero-tag">Furniture & Home Decor</div>
+    <h1>Rumah yang<br><em>Nyaman</em><br>Dimulai di Sini</h1>
+    <p class="hero-sub">Hadirkan kehangatan dan keindahan alami ke dalam ruangan Anda. Koleksi furnitur dan dekorasi kami dirancang untuk menciptakan ruang yang spacious, tenang, dan penuh karakter.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">🛋️ Beli Sekarang</a>
+      <a href="#about" class="btn-secondary">Pelajari Lebih Lanjut</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Produk Pilihan</span>
+      </div>
+      <div>
+        <span class="stat-num">2.4k</span>
+        <span class="stat-label">Pelanggan Puas</span>
+      </div>
+      <div>
+        <span class="stat-num">4.9★</span>
+        <span class="stat-label">Rating Rata-rata</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-main">
+      <div class="furniture-icon">🛋️</div>
+      <div class="hero-card-label">Nordic Sofa Series</div>
+      <div class="hero-price-badge">
+        <span>MULAI</span>
+        <strong>2.4jt</strong>
+      </div>
+    </div>
+    <div class="floating-card">
+      <div class="fc-icon">🪵</div>
+      <div>
+        <div class="fc-text">Solid Wood</div>
+        <div class="fc-sub">Bahan Alami Premium</div>
+      </div>
+    </div>
+    <div class="floating-card2">
+      <div class="fc-icon">🚚</div>
+      <div>
+        <div class="fc-text">Gratis Ongkir</div>
+        <div class="fc-sub">Seluruh Indonesia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-content reveal">
+    <div class="about-label">Tentang Brand Kami</div>
+    <h2 class="section-title">Kami percaya <em>rumah</em> adalah cerminan jiwa</h2>
+    <p class="about-text">Rumah Baju lahir dari rasa cinta pada kehidupan yang tertata dan ruang yang berbicara. Setiap produk kami dipilih dan dirancang dengan standar kualitas tinggi, menggabungkan estetika Skandinavia yang bersih dengan kehangatan material alami khas Nusantara.</p>
+    <p class="about-text">Kami tidak hanya menjual furnitur — kami membantu Anda menciptakan <em>sanctuary</em> pribadi yang terasa seperti pelukan setiap kali Anda pulang ke rumah.</p>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-icon">🌿</div>
+        <div class="value-title">Ramah Lingkungan</div>
+        <div class="value-desc">Material sustainable dan proses produksi yang bertanggung jawab terhadap alam.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🔨</div>
+        <div class="value-title">Kualitas Handmade</div>
+        <div class="value-desc">Dibuat oleh pengrajin lokal terlatih dengan perhatian penuh pada setiap detail.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🎨</div>
+        <div class="value-title">Desain Customizable</div>
+        <div class="value-desc">Pilih warna, ukuran, dan finishing sesuai selera dan kebutuhan ruangan Anda.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🛡️</div>
+        <div class="value-title">Garansi 2 Tahun</div>
+        <div class="value-desc">Setiap produk dilindungi garansi struktural selama 2 tahun penuh.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-visual reveal">
+    <div class="about-box ab1">🛏️</div>
+    <div class="about-box ab2">🪑</div>
+    <div class="about-box ab3">🏮</div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-header reveal">
+    <div class="about-label">Koleksi Unggulan</div>
+    <h2 class="section-title">Produk Terbaik Kami</h2>
+    <p style="color:var(--soft-gray);font-size:0.95rem;max-width:500px;margin:0 auto;line-height:1.8;">Dari ruang tamu hingga kamar tidur — temukan potongan sempurna yang mengangkat keindahan rumah Anda.</p>
+  </div>
+
+  <div class="products-grid">
+    <!-- Product 1 -->
+    <div class="product-card reveal">
+      <div class="product-img">
+        🛋️
+        <div class="product-badge">Terlaris</div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Ruang Tamu</div>
+        <div class="product-name">Baju Nordic Sofa</div>
+        <div class="product-bottom">
+          <div>
+            <span class="product-price">Rp 4.200.000</span>
+            <span class="product-old">Rp 5.500.000</span>
+          </div>
+          <button class="add-btn" onclick="addToCart(this, 'Saga Nordic Sofa')">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card reveal">
+      <div class="product-img" style="background:#e8f0e8;">
+        🪑
+        <div class="product-badge" style="background:var(--terracotta);">Baru</div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Ruang Makan</div>
+        <div class="product-name">Kursi Kayu Pandan</div>
+        <div class="product-bottom">
+          <div>
+            <span class="product-price">Rp 1.850.000</span>
+            <span class="product-old">Rp 2.200.000</span>
+          </div>
+          <button class="add-btn" onclick="addToCart(this, 'Kursi Kayu Pandan')">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card reveal">
+      <div class="product-img" style="background:#f5ede0;">
+        🛏️
+        <div class="product-badge" style="background:var(--gold);">Popular</div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Kamar Tidur</div>
+        <div class="product-name">Ranjang Jati saga</div>
+        <div class="product-bottom">
+          <div>
+            <span class="product-price">Rp 6.500.000</span>
+            <span class="product-old">Rp 8.000.000</span>
+          </div>
+          <button class="add-btn" onclick="addToCart(this, 'Ranjang Jati Saga')">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card reveal">
+      <div class="product-img" style="background:#e8dff0;">
+        🪴
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Dekorasi</div>
+        <div class="product-name">Pot Terracotta Set</div>
+        <div class="product-bottom">
+          <div>
+            <span class="product-price">Rp 320.000</span>
+            <span class="product-old">Rp 450.000</span>
+          </div>
+          <button class="add-btn" onclick="addToCart(this, 'Pot Terracotta Set')">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart toast -->
+  <div id="toast" style="
+    position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(100px);
+    background:var(--charcoal); color:#fff; padding:0.9rem 2rem; border-radius:3rem;
+    font-size:0.88rem; box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    transition:transform 0.4s cubic-bezier(.34,1.56,.64,1); z-index:999;
+    white-space:nowrap; pointer-events:none;
+  "></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header reveal">
+    <div class="about-label">Ulasan Pelanggan</div>
+    <h2 class="section-title">Kata Mereka Tentang Kami</h2>
+  </div>
+
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Sofa Nordic Saga benar-benar mengubah ruang tamu saya. Kualitas bahan luar biasa, empuk, dan tampilannya sangat elegan. Pengiriman juga cepat dan aman sampai!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👨‍</div>
+        <div>
+          <div class="testi-name">lorry</div>
+          <div class="testi-city">Semarang</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Beli set kursi makan kayu Pandan untuk rumah baru kami. Desainnya timeless, bisa mix dengan berbagai tema interior. Sangat puas dan pasti akan beli lagi!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👨</div>
+        <div>
+          <div class="testi-name">Bardi</div>
+          <div class="testi-city">Bali</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★☆</div>
+      <p class="testi-text">"Pot terracotta set-nya cantik banget dan harganya sangat worth it. Customer service responsif dan membantu saya memilih ukuran yang pas. Recommended!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">‍👨‍</div>
+        <div>
+          <div class="testi-name">baim</div>
+          <div class="testi-city">Surabaya</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">RUMAH<span>Baju</span></div>
+      <p class="footer-desc">Kami hadir untuk membantu Anda menciptakan ruang hidup yang nyaman, indah, dan penuh makna. Furniture berkualitas dengan sentuhan alami.</p>
+      <div class="social-row">
+        <a class="social-btn" href="#" title="Instagram">📸</a>
+        <a class="social-btn" href="#" title="TikTok">🎵</a>
+        <a class="social-btn" href="#" title="WhatsApp">💬</a>
+        <a class="social-btn" href="#" title="Facebook">👍</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Produk</h4>
+      <ul>
+        <li><a href="#">Sofa & Kursi</a></li>
+        <li><a href="#">Kamar Tidur</a></li>
+        <li><a href="#">Ruang Makan</a></li>
+        <li><a href="#">Dekorasi</a></li>
+        <li><a href="#">Outdoor</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Layanan</h4>
+      <ul>
+        <li><a href="#">Interior Konsultasi</a></li>
+        <li><a href="#">Custom Order</a></li>
+        <li><a href="#">Pengiriman</a></li>
+        <li><a href="#">Garansi</a></li>
+        <li><a href="#">Cicilan 0%</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontak</h4>
+      <ul>
+        <li><a href="#">📍 Jl. gatak sughian No. 35, semarang</a></li>
+        <li><a href="#">📞 +62 812-3456-7890</a></li>
+        <li><a href="#">✉️ halo@rumah baju.id</a></li>
+        <li><a href="#">🕐 Senin–Sabtu, 09.00–18.00</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 rumah baju. All rights reserved.</span>
+    <span>Kelompok 5 — Furniture & Home Decor 🪵</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Sticky nav shadow
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.boxShadow = window.scrollY > 40 ? '0 4px 20px rgba(0,0,0,0.08)' : 'none';
+  });
+
+  // Cart toast
+  function addToCart(btn, name) {
+    btn.textContent = '✓';
+    btn.style.background = 'var(--sage)';
+    const toast = document.getElementById('toast');
+    toast.textContent = `✅ ${name} ditambahkan ke keranjang`;
+    toast.style.transform = 'translateX(-50%) translateY(0)';
+    setTimeout(() => {
+      toast.style.transform = 'translateX(-50%) translateY(100px)';
+      setTimeout(() => { btn.textContent = '+'; btn.style.background = 'var(--terracotta)'; }, 600);
+    }, 2500);
+  }
+</script>
+</body>
+</html>
